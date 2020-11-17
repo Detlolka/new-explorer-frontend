@@ -1,1 +1,1 @@
-# new-explorer-frontend
+# news-explorer-frontend
