@@ -1,0 +1,8 @@
+.about__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 600px;
+    margin-top: 51px;
+    margin-left: 56px;
+}

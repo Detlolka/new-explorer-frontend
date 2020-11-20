@@ -1,0 +1,7 @@
+.background {
+    margin: 0 auto;    
+    max-width: 1440px;
+    min-width: 320px;            
+    background-image: url('../../images/background.jpg');
+    background-repeat: no-repeat;    
+}

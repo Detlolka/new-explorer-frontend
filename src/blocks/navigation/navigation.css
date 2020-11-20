@@ -1,0 +1,6 @@
+@import url('./__authorize-button/navigation__authorize-button.css');
+@import url('./__main/navigation__main.css');
+
+.navigation {     
+    display: flex;
+}
