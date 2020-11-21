@@ -1,5 +1,5 @@
 @import url('./__title/header__title.css');
-.header {     
+.header {         
     display: flex;
     justify-content: space-between;
     padding: 30px 104px 0px 104px;

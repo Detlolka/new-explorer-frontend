@@ -4,10 +4,10 @@
 @import url('./__input/search__input.css');
 @import url('./__button/search__button.css');
 
-.search {
+.search {    
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 80px;
-    padding-bottom: 68px;
+    padding-bottom: 67px;
 }

@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import SearchFrom from "./SearchForm";
-import NewsCardList from './NewsCardList'
-import About from "./About";
+import Main from './Main'
 import Footer from "./Footer";
 
 
@@ -13,8 +12,7 @@ function App() {
         <Header />
         <SearchFrom />
       </div>
-      <NewsCardList />
-      <About />
+      <Main />      
       <Footer />
     </div>
   );
