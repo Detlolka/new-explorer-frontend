@@ -3,10 +3,7 @@
 @import url('./__author/about__author.css');
 @import url('./__training/about__training.css');
 
-.about {
-    margin: 0 auto;
-    max-width: 1440px;
-    min-width: 320px;
+.about {    
     display: flex;
     justify-content: center;
     padding-top: 80px;

@@ -1,0 +1,15 @@
+.article__text {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;    
+    color: #1A1B22;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    padding-left: 24px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}

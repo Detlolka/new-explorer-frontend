@@ -29,3 +29,11 @@
     font-display: swap;
     src: url("roboto-black.woff") format("woff");
 }
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("sourcesanspro-regular.woff") format("woff");
+}
