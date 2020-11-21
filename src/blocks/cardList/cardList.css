@@ -1,0 +1,9 @@
+@import url('./__result/cardList__result.css');
+
+.cardList {
+    max-width: 1440px;
+    min-width: 320px;
+    margin: 0 auto;
+    background: #f5f6f7;
+    padding: 62px 106px 62px 102px;
+}
