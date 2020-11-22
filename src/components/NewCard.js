@@ -10,6 +10,7 @@ export default function NewCard({ art }) {
             <p className="article__text">{art.text}</p>
             <p className="article__source">{art.source}</p>
             </a>
+            <button className="article__save"></button>          
         </div>
     )
 }

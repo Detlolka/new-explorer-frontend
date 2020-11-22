@@ -11,4 +11,5 @@
 @import url('./blocks/article/article.css');
 @import url('./blocks/about/about.css');
 @import url('./blocks/footer/footer.css');
+@import url('./blocks/cardList/__view/_show/cardList__view_show.css');
 

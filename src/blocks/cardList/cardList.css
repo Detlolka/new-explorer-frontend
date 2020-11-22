@@ -1,7 +1,13 @@
 @import url('./__result/cardList__result.css');
 @import url('./__container/cardList__container.css');
+@import url('./__view/cardList__view.css');
 
-.cardList {    
+.cardList {
+    max-width: 1440px;
+    min-width: 320px;      
     background: #f5f6f7;
     padding: 62px 106px 62px 102px;
+    display: flex;
+    flex-direction: column;
+        
 }
