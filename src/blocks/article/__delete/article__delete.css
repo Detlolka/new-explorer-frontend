@@ -1,0 +1,47 @@
+.article__delete {
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    background-color: #fff;
+    background-image: url('../../../images/icon/delete_notActive.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+}
+
+.article__delete::before {
+    content: 'Убрать из сохраненных';
+    position: absolute;
+    top: 3%;
+    right: 110%;
+    width: 182px;
+    height: 40px;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0;
+    transition: 0.4s;       
+}
+
+.article__delete:hover:before {
+    opacity: 1;
+}
+
+.article__delete:hover {
+    background-image: url('../../../images/icon/delete__hover.svg');
+}
+

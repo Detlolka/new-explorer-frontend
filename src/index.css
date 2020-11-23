@@ -10,6 +10,13 @@
 @import url('./blocks/cardList/cardList.css');
 @import url('./blocks/article/article.css');
 @import url('./blocks/about/about.css');
+@import url('./blocks/saved-news-header/saved-news-header.css');
 @import url('./blocks/footer/footer.css');
 @import url('./blocks/cardList/__view/_show/cardList__view_show.css');
+@import url('./blocks/background/__white/background_white.css');
+@import url('./blocks/header/__title/_black/header__title_black.css');
+@import url('./blocks/navigation/__main/_black/navigation__main_black.css');
+@import url('./blocks/navigation/__saved-news/_black/navigation__saved-news_black.css');
+@import url('./blocks/article/__keyword/_visible/article__keyword_visible.css');
+
 

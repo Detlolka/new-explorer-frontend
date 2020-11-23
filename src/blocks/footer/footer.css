@@ -13,4 +13,5 @@
     padding: 32px 83px 30px 104px;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
 }

@@ -1,0 +1,12 @@
+.navigation__profile {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;    
+    display: flex;
+    align-items: center;    
+    color: #1A1B22;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

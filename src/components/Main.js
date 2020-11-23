@@ -1,12 +1,13 @@
 import React from 'react';
-import NewsCardList from './NewsCardList'
-import About from "./About";
+import SavedNewsHeader from './SavedNewsHeader';
+import SavedNews from './SavedNews';
+
 
 export default function Main() {
     return (
         <div className='content'>
-        <NewsCardList />
-        <About />
+        <SavedNewsHeader />
+        <SavedNews />        
         </div>
     )
 }

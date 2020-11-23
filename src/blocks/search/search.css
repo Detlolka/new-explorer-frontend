@@ -4,7 +4,10 @@
 @import url('./__input/search__input.css');
 @import url('./__button/search__button.css');
 
-.search {    
+.search {
+    max-width: 1440px;
+    min-width: 320px;   
+    margin: 0 auto;    
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,15 +1,16 @@
-.navigation__main {
-    font-family: "Roboto", serif;
+.navigation__saved-news {
+    font-family: 'Roboto', serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 24px;    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
     margin-right: 32px;
     margin-top: 12px;
     margin-bottom: 0px;
     padding-bottom: 23px;
-    border-bottom: 3px solid #fff;
-    color: #fff;
     text-decoration: none;
-    border-bottom: 3px solid white;    
 }

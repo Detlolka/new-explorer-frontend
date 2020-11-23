@@ -1,0 +1,13 @@
+.navigation__auth {
+    min-width: 176px;
+    max-height: 48px;
+    background-color: transparent;    
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 100px;
+    padding: 0;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,7 +1,6 @@
-.background {
-    margin: 0 auto;    
-    max-width: 1440px;
-    min-width: 320px;            
+
+.background {                  
     background-image: url('../../images/background.jpg');
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
+    background-position: center;     
 }

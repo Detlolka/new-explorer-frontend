@@ -1,0 +1,11 @@
+.saved-news-header__info {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 34px;    
+    color: #1A1B22;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    max-width: 366px;
+}
