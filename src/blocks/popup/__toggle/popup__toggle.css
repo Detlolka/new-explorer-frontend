@@ -1,0 +1,13 @@
+.popup__toggle {
+    margin-top: 16px;
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    max-width: 226px;
+}

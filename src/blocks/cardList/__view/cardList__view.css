@@ -18,3 +18,8 @@
     align-self: center;
     margin-top: 64px;
 }
+
+.cardList__view:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

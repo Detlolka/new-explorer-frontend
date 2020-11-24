@@ -2,7 +2,7 @@ import React from "react";
 import {  Link, useLocation } from 'react-router-dom';
 
 
-export default function Navigation() {
+export default function Navigation({ isOpenPopupAuth }) {
 
   const { pathname } = useLocation();
 
@@ -19,7 +19,7 @@ export default function Navigation() {
       </div>      
       :
       <Link to='/' className="navigation__auth">
-      <button className="navigation__authorize-button">Авторизоваться</button>
+      <button className="navigation__authorize-button" onClick={isOpenPopupAuth}>Авторизоваться</button>
       </Link>
        }
     </nav>

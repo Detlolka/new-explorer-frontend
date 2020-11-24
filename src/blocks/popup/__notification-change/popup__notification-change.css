@@ -1,0 +1,13 @@
+.popup__notification-change {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #2F71E5;
+}
+
+.popup__notification-change:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

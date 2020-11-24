@@ -7,4 +7,9 @@
     text-align: center;    
     color: #1A1B22;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.footer__navigation-link:hover {
+    opacity: 0.6;
 }

@@ -5,6 +5,7 @@
 @import url('./__navigation-list/footer__navigation-list.css');
 @import url('./__social/footer__social.css');
 @import url('./__social-list/footer__social-list.css');
+@import url('./__social-link/footer__social-link.css');
 
 .footer {
     max-width: 1440px;

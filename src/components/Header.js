@@ -2,11 +2,11 @@ import React from "react";
 import Navigation from "./Navigation";
 import { useLocation } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ isOpenPopupAuth }) {
   const { pathname } = useLocation();
 
   return (
-    <header className="header">
+    <header className={"header " + (pathname === "/saved-news" && "header_white")}>
       <h3
         className={
           "header__title " +
@@ -15,7 +15,7 @@ export default function Header() {
       >
         NewsExplorer
       </h3>
-      <Navigation />
+      <Navigation isOpenPopupAuth={isOpenPopupAuth}/>
     </header>
   );
 }
