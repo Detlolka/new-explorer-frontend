@@ -7,9 +7,17 @@
     outline: none;   
     color: #fff;
     background-color: transparent;
-    border: none; 
+    border: none;
+    text-decoration: none; 
 }
 
 .navigation__authorize-button:hover {
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navigation__authorize-button {
+        font-size: 16px;
+        line-height: 24px;        
+    }
 }

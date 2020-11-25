@@ -12,3 +12,10 @@
     padding-left: 24px;
     padding-bottom: 24px;    
 }
+
+@media (max-width: 768px) {
+    .article__source {
+        padding-bottom: 16px;
+        padding-left: 16px;             
+    }
+}

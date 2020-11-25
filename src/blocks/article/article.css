@@ -13,5 +13,13 @@
     position: relative;
     max-width: 400px;      
     border-radius: 4%;
-    overflow: hidden;                             
+    overflow: hidden;
+    box-sizing: border-box;                             
+}
+
+@media (max-width: 768px) {
+    .article {
+        width: 224px;
+        height: 420px;
+    }
 }

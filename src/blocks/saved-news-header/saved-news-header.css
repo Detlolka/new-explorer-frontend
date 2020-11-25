@@ -10,3 +10,9 @@
     padding-bottom: 32px;
     padding-left: 104px;
 }
+
+@media (max-width: 768px) {
+    .saved-news-header {
+        padding-left: 40px;        
+    }
+}

@@ -1,3 +1,10 @@
 .footer__social-list {
     margin-right: 23px;      
 }
+
+
+@media (max-width: 770px) {
+    .footer__social-list {
+        margin-right: 29px;
+    }
+}

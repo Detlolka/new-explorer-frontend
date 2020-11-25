@@ -1,0 +1,14 @@
+.about__image {
+    width: 464px;
+    height: 464px;
+    border-radius: 1000px;
+}
+
+@media (max-width: 768px) {
+    .about__image {
+        width: 232px;
+        height: 232px;
+        align-self: flex-end;
+        margin-bottom: 21px;        
+    }
+}

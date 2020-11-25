@@ -10,3 +10,10 @@
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+@media (max-width: 768px) {
+    .navigation__profile {
+        font-size: 16px;
+        line-height: 24px;        
+    }
+}

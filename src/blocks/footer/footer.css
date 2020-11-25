@@ -16,3 +16,9 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 24px 41px 21px 40px             
+    }
+}

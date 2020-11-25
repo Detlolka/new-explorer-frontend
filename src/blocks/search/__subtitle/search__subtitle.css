@@ -11,3 +11,12 @@
     margin-right: 65px;
     align-self: center;
 }
+
+@media (max-width: 768px) {
+    .search__subtitle {        
+        max-width: 452px;
+        margin-left: 135px;
+        margin-top: 16px;
+        margin-bottom: 44px;       
+    }
+}

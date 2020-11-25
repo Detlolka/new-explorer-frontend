@@ -10,6 +10,13 @@
     padding-left: 24px;
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+}
+
+@media (max-width: 768px) {
+    .article__text {
+        padding-left: 16px;
+        padding-right: 16px;        
+    }
 }

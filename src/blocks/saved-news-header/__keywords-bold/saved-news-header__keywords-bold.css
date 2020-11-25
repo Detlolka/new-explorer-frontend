@@ -1,3 +1,9 @@
 .saved-news-header__keywords-bold {
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    .saved-news-header__keywords-bold {
+        font-size: 14px;        
+    }
+}

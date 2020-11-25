@@ -13,3 +13,9 @@
     box-sizing: border-box;
         
 }
+
+@media (max-width: 768px) {
+    .cardList {
+        padding: 40px 30px 40px 30px;        
+    }
+}

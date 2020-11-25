@@ -4,3 +4,10 @@
     grid-template-columns: repeat(auto-fit, 400px);       
     justify-content: center;    
 }
+
+@media (max-width: 768px) {
+    .cardList__container {
+        grid-template-columns: repeat(auto-fit, 224px);
+        grid-gap: 8px        
+    }
+}

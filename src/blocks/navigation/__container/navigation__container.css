@@ -9,3 +9,11 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+    .navigation__container {
+        margin-top: 6px;
+        width: 100px;
+        max-height: 40px;
+    }
+}

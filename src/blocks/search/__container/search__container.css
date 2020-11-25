@@ -8,3 +8,11 @@
     display: flex;
     justify-content: space-between;       
 }
+
+@media (max-width: 768px) {
+    .search__container {
+        max-width: 448px;
+        max-height: 56px;
+        margin-left: 48px;
+    }
+}

@@ -14,3 +14,10 @@
     padding-top: 80px;
     padding-bottom: 67px;
 }
+
+@media (max-width: 768px) {
+    .search {
+        padding-top: 38px;
+        padding-bottom: 36px;
+    }
+}
