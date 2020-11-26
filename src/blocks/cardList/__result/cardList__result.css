@@ -15,5 +15,13 @@
         font-size: 30px;
         line-height: 34px;
         margin-bottom: 32px;
+        max-width: 336px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cardList__result {        
+        margin-bottom: 24px;
+        max-width: 288px;
     }
 }

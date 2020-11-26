@@ -8,15 +8,24 @@
     max-width: 545px;
     margin-top: 32px;
     margin-bottom: 64px;
-    margin-right: 65px;
+    padding-right: 65px;
     align-self: center;
 }
 
 @media (max-width: 768px) {
     .search__subtitle {        
         max-width: 452px;
-        margin-left: 135px;
+        padding-right: 0px;
+        padding-left: 66px;
         margin-top: 16px;
         margin-bottom: 44px;       
+    }
+}
+
+@media (max-width: 520px) {
+    .search__subtitle {
+        max-width: 288px;
+        padding-left: 8px;
+        margin-bottom: 122px;        
     }
 }

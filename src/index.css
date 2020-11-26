@@ -21,5 +21,11 @@
 @import url('./blocks/header/_white/header_white.css');
 @import url('./blocks/popup/popup.css');
 @import url('./blocks/popup/_opened/popup_opened.css');
+@import url('./blocks/burger/burger.css');
+@import url('./blocks/burger/_black/burger_black.css');
+@import url('./blocks/burger/__title/_black/burger__title_black.css');
+@import url('./blocks/burger/__view/_black/burger__view_black.css');
+@import url('./blocks/popup/__close/_show/popup__close_show.css');
+@import url('./blocks/burger-navigation/burger-navigation.css');
 
 

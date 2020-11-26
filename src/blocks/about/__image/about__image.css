@@ -8,7 +8,15 @@
     .about__image {
         width: 232px;
         height: 232px;
-        align-self: flex-end;
+        align-self: center;
         margin-bottom: 21px;        
+    }
+}
+
+@media (max-width: 435px) {
+    .about__image {        
+        margin-left: 0px;
+        width: 272px;
+        height: 272px;              
     }
 }

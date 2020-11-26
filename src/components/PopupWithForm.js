@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PopupWIthForm({ children, isOpen, name, onClose, title, buttonName, toggleName, changePopup }) {
+export default function PopupWIthForm({ children, isOpen, name, onClose, title, buttonName, toggleName, changePopup, showClose }) {
 
   function handleSubmit(evt) {
       evt.preventDefault();
@@ -19,7 +19,7 @@ export default function PopupWIthForm({ children, isOpen, name, onClose, title, 
             или&nbsp;<span className="popup__another" onClick={changePopup}>{toggleName}</span>
           </button>
         </form>
-        <button className="popup__close" onClick={onClose} />
+        <button className={"popup__close " + (showClose && "popup__close_show") } onClick={onClose} />
       </div>
     </div>
   );

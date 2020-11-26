@@ -4,15 +4,24 @@
     backdrop-filter: blur(8px);
     border-radius: 100px;    
     width: 610px;
-    height: 64px;
+    
     display: flex;
-    justify-content: space-between;       
+    justify-content: space-between;          
 }
 
 @media (max-width: 768px) {
     .search__container {
-        max-width: 448px;
-        max-height: 56px;
+        max-width: 448px;        
         margin-left: 48px;
+    }
+}
+
+@media (max-width: 520px) {
+    .search__container {
+        flex-direction: column;
+        width: 288px;        
+        margin-left: 8px;
+        background: transparent;
+        border: none;        
     }
 }

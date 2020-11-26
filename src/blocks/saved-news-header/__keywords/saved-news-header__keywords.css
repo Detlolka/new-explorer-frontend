@@ -14,3 +14,10 @@
         font-size: 14px;        
     }
 }
+
+@media (max-width: 404px) {
+    .saved-news-header__keywords {
+        font-size: 18px;
+        max-width: 288px;        
+    }
+}

@@ -22,3 +22,9 @@
     background: #2A65CC;
 }
 
+@media (max-width: 520px) {
+    .search__button {
+       margin-top: 16px;
+    }
+}
+

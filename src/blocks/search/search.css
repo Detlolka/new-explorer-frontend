@@ -21,3 +21,10 @@
         padding-bottom: 36px;
     }
 }
+
+@media (max-width: 520px) {
+    .search {        
+        padding-top: 30px;
+        padding-top: 32px;
+    }
+}

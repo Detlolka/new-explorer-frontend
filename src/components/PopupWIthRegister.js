@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm'
 
-export default function PopupWithRegister({ isOpen, onClose, changePopup }) {
+export default function PopupWithRegister({ isOpen, onClose, changePopup, showClose }) {
     return (
         <PopupWithForm
         isOpen={isOpen}
@@ -11,6 +11,7 @@ export default function PopupWithRegister({ isOpen, onClose, changePopup }) {
         buttonName="Зарегистрироваться"
         toggleName="Войти"
         changePopup={changePopup}
+        showClose={showClose}
         children={
             <div className="popup__inputs">
                <p className="popup__input-title">Email</p>

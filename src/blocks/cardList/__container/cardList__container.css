@@ -11,3 +11,10 @@
         grid-gap: 8px        
     }
 }
+
+@media (max-width: 520px) {
+    .cardList__container {
+        grid-template-columns: repeat(auto-fit, 288px);
+        grid-row-gap: 10px       
+    }
+}

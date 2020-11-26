@@ -1,0 +1,9 @@
+.burger-navigation__auth {
+    text-decoration: none;
+    background-color: transparent;    
+}
+
+.burger-navigation__auth:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

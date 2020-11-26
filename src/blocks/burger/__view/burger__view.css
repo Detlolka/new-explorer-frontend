@@ -1,0 +1,14 @@
+.burger__view {
+    background-image: url('../../../images/icon/menu.svg');
+    background-color: transparent;
+    background-position: center;
+    border: none;
+    offset: none;
+    width: 24px;
+    height: 24px;    
+}
+
+.burger__view:hover {
+    opacity: 0.6;
+    cursor: pointer;        
+}

@@ -21,3 +21,10 @@
         line-height: 24px;        
     }
 }
+
+@media (max-width: 632px) {
+    .navigation__authorize-button {        
+        font-size: 12px;
+        line-height: 18px;              
+    }
+}

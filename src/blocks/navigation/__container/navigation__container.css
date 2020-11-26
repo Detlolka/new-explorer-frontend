@@ -17,3 +17,10 @@
         max-height: 40px;
     }
 }
+
+@media (max-width: 632px) {
+    .navigation__container {        
+        margin-top: 4px;
+        width: 90px;             
+    }
+}

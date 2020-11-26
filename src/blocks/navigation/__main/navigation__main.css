@@ -24,3 +24,10 @@
         line-height: 24px;        
     }
 }
+
+@media (max-width: 632px) {
+    .navigation__main {        
+        font-size: 12px;
+        line-height: 18px;              
+    }
+}

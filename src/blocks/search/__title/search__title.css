@@ -16,3 +16,10 @@
         max-width: 385px;
     }
 }
+
+@media (max-width: 520px) {
+    .search__title {
+        max-width: 285px;
+    }
+}
+

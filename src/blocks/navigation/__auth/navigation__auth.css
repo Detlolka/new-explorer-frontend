@@ -25,3 +25,10 @@
         margin-top: 6px;
     }
 }
+
+@media (max-width: 632px) {
+    .navigation__auth{        
+        min-width: 132px;
+        margin-top: 4px;              
+    }
+}

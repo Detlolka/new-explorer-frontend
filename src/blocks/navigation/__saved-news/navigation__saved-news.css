@@ -26,3 +26,10 @@
         padding-bottom: 17px;        
     }
 }
+
+@media (max-width: 632px) {
+    .navigation__saved-news {        
+        font-size: 12px;
+        line-height: 18px;              
+    }
+}

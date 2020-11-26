@@ -17,3 +17,9 @@
         max-width: 366px;
     }
 }
+
+@media (max-width: 404px) {
+    .saved-news-header__info {        
+        max-width: 288px;
+    }
+}

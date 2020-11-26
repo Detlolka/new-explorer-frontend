@@ -16,3 +16,9 @@
         padding-left: 40px;        
     }
 }
+
+@media (max-width: 404px) {
+    .saved-news-header {
+        padding-left: 16px       
+    }
+}

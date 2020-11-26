@@ -9,3 +9,9 @@
     margin-bottom: 0px;
 }
 
+@media (max-width: 404px) {
+    .saved-news-header__title {
+        font-size: 12px;      
+    }
+}
+
