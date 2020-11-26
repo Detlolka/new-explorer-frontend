@@ -4,8 +4,7 @@
 @import url('./__header/burger__header.css');
 
 .burger {
-    padding: 16px 16px 16px 16px;
+    padding: 0px 16px 16px 16px;
     display: flex;
-    flex-direction: column;   
-    box-shadow: inset 0px -1px 0px #D1D2D6;       
+    flex-direction: column;                 
 }
