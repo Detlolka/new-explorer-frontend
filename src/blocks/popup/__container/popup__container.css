@@ -8,3 +8,14 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 428px) {
+    .popup__container {
+        padding: 16px 16px 16px 16px;          
+    }
+}
+
+@media (max-width: 428px) {
+    .popup__container {
+        margin-bottom: 120px;          
+    }
+}

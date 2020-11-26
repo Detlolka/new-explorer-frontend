@@ -5,6 +5,10 @@
     margin-bottom: 31px;    
 }
 
+.popup__input[placeholder] {
+    opacity: 0.2;
+}
+
 .popup__input:focus {    
     outline: none;
 }
