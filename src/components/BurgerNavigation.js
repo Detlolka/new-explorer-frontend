@@ -15,8 +15,8 @@ export default function BurgerNavigation({ changeButton, isOpen }) {
                 <Link to="/" className="burger-navigation__logout" onClick={changeButton} />
             </div>
         :
-            <Link to="/" className="burger-navigation__auth">
-                <button className="burger-navigation__auth-button" onClick={isOpen}>Авторизоваться</button>
+            <Link to="/" className="burger-navigation__auth" onClick={isOpen}>
+                Авторизоваться
             </Link>
         }            
         </nav>

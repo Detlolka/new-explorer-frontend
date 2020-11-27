@@ -16,9 +16,9 @@ export default function PopupWithAuth({ isOpen, onClose, changePopup, showClose 
         children={
             <div className="popup__inputs">
                 <p className="popup__input-title">Email</p>
-                <input className="popup__input popup__input_email-auth" type="text" placeholder="Введите почту" name="profileEmail" />
+                <input className="popup__input popup__input_email-auth" type="text" placeholder="Введите почту" name="profileEmail" required/>
                 <p className="popup__input-title">Пароль</p>
-                <input className="popup__input popup__input_password-auth" type="password" placeholder="Введите пароль" name="profilePassword" />
+                <input className="popup__input popup__input_password-auth" type="password" placeholder="Введите пароль" name="profilePassword" required />
             </div>
         }
          />

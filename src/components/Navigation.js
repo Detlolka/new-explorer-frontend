@@ -2,7 +2,7 @@ import React from "react";
 import {  Link, useLocation } from 'react-router-dom';
 
 
-export default function Navigation({ isOpenPopupAuth }) {
+export default function Navigation({ isOpen }) {
 
   const { pathname } = useLocation();
 
@@ -18,8 +18,8 @@ export default function Navigation({ isOpenPopupAuth }) {
       <Link className="navigation__logout" to="/"></Link>
       </div>      
       :
-      <Link to='/' className="navigation__auth">
-      <button className="navigation__authorize-button" onClick={isOpenPopupAuth}>Авторизоваться</button>
+      <Link to='/' className="navigation__auth" onClick={isOpen}>
+      Авторизоваться
       </Link>
        }
     </nav>

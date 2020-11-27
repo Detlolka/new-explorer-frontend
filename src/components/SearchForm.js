@@ -8,16 +8,17 @@ export default function SearchForm() {
         Находите самые свежие статьи на любую тему и сохраняйте в своём личном
         кабинете
       </p>
-      <div className="search__container">
+      <form className="search__container" method="GET" action="#">
         <input
           className="search__input"
           type="text"
           placeholder="Введите тему новости"
           name="search"
           defaultValue=""
+          required
         />
         <button className="search__button">Искать</button>
-      </div>
+      </form>
     </div>
   );
 }

@@ -1,4 +1,9 @@
 .navigation__auth {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;     
     min-width: 176px;
     max-height: 48px;
     background-color: transparent;    
@@ -10,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
 }
 
 .navigation__auth:hover {
@@ -20,6 +26,8 @@
 
 @media (max-width: 768px) {
     .navigation__auth {
+        font-size: 16px;
+        line-height: 24px;  
         min-width: 152px;
         max-height: 40px;
         margin-top: 6px;
@@ -29,6 +37,8 @@
 @media (max-width: 632px) {
     .navigation__auth{        
         min-width: 132px;
-        margin-top: 4px;              
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 18px;                
     }
 }

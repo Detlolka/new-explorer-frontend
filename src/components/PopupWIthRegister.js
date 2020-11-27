@@ -15,11 +15,11 @@ export default function PopupWithRegister({ isOpen, onClose, changePopup, showCl
         children={
             <div className="popup__inputs">
                <p className="popup__input-title">Email</p>
-                <input className="popup__input popup__input_email-register" type="text" placeholder="Введите почту" name="profileEmail" />
+                <input className="popup__input popup__input_email-register" type="text" placeholder="Введите почту" name="profileEmail" required />
                 <p className="popup__input-title">Пароль</p>
-                <input className="popup__input popup__input_password-register" type="password" placeholder="Введите пароль" name="profilePassword" />
+                <input className="popup__input popup__input_password-register" type="password" placeholder="Введите пароль" name="profilePassword" required />
                 <p className="popup__input-title">Имя</p>
-                <input className="popup__input popup__input_name-register" type="text" placeholder="Введите своё имя" name="profileName" />
+                <input className="popup__input popup__input_name-register" type="text" placeholder="Введите своё имя" name="profileName" required />
             </div>
         }
          />

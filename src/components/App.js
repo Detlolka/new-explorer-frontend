@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import { useWindowWidth } from '@react-hook/window-size'
 import Header from "./Header";
 import SearchFrom from "./SearchForm";
 import NewsCardList from "./NewsCardList";
@@ -17,8 +18,9 @@ function App() {
 
   // стейт ширины дисплея
   const [width, setWidth] = useState(false);
-
-
+  
+  //слушатель ширины экрана
+  const windowSize = useWindowWidth();
 
   // стейт попапа авторизации
   const [handleAuthPopup, setHandleAuthPopup] = useState(false);
@@ -87,25 +89,15 @@ function App() {
     document.addEventListener("keydown", closeEsc);
 
     // функция замены компонента
-    function changeHeader(size) {
+    
+    function changeHeader (size) {      
       if (size <= 520) {
         setWidth(true);
       } else {
         setWidth(false)
       }
     }
-
-    changeHeader(window.screen.width);
-
-    // слушатель ширины
-    window.addEventListener('resize', (evt) => {
-      const width = evt.target.innerWidth;
-      if (width <= 520) {
-        setWidth(true);
-      } else {
-        setWidth(false);
-      }
-    })
+    changeHeader(windowSize)
 
     return () => {
       document.removeEventListener('click', closeOverlay);
@@ -121,7 +113,7 @@ function App() {
           <div className="background">
             {width ?
               <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} />
-              : <Header isOpenPopupAuth={openPopupAuth} />
+              : <Header isOpen={openPopupAuth} />
             }
             <SearchFrom />
           </div>

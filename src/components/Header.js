@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "./Navigation";
 import { useLocation } from "react-router-dom";
 
-export default function Header({ isOpenPopupAuth }) {
+export default function Header({ isOpen}) {
   const { pathname } = useLocation();
 
   return (
@@ -15,7 +15,7 @@ export default function Header({ isOpenPopupAuth }) {
       >
         NewsExplorer
       </h3>
-      <Navigation isOpenPopupAuth={isOpenPopupAuth}/>
+      <Navigation isOpen={isOpen}/>
     </header>
   );
 }
