@@ -1,0 +1,9 @@
+.navigation__logout {
+    background-image: url('../../../images/icon/logout.svg');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    background-size: contain;       
+}
+

@@ -1,0 +1,10 @@
+.navigation__saved-news_black {
+  color: #1A1B22;
+  border-bottom: 3px solid black;
+}
+
+@media (max-width: 768px) {
+  .navigation__saved-news_black {
+    border-bottom: 2px solid black;
+  }
+}

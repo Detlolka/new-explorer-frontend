@@ -1,0 +1,11 @@
+.burger-navigation__link {
+    display: flex;
+    flex-direction: column; 
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 56px;    
+    color: #FFFFFF;
+    text-decoration: none;
+}

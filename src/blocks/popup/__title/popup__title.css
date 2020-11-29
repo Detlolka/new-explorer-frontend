@@ -1,0 +1,11 @@
+.popup__title {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;    
+    color: #1A1B22;
+    align-self: flex-start;
+    margin-top: 0;
+    margin-bottom: 22px;
+}

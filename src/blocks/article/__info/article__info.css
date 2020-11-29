@@ -1,0 +1,7 @@
+.article__info {    
+    text-decoration: none;           
+}
+
+.article__info:hover {
+    cursor: pointer;
+}

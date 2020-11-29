@@ -1,0 +1,27 @@
+.cardList__result {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 46px;    
+    color: #1A1B22;
+    margin-top: 18px;
+    margin-bottom: 64px;
+    max-width: 712px;
+}
+
+@media (max-width: 768px) {
+    .cardList__result {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 32px;
+        max-width: 336px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cardList__result {        
+        margin-bottom: 24px;
+        max-width: 288px;
+    }
+}

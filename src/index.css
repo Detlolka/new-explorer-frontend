@@ -1,0 +1,31 @@
+@import url('./vendor/normalize.css');
+@import url('./blocks/root/root.css');
+@import url('./fonts/Roboto.css');
+@import url('./blocks/page/page.css');
+@import url('./blocks/background/background.css');
+@import url('./blocks/header/header.css');
+@import url('./blocks/navigation/navigation.css');
+@import url('./blocks/search/search.css');
+@import url('./blocks/content/content.css');
+@import url('./blocks/cardList/cardList.css');
+@import url('./blocks/article/article.css');
+@import url('./blocks/about/about.css');
+@import url('./blocks/saved-news-header/saved-news-header.css');
+@import url('./blocks/footer/footer.css');
+@import url('./blocks/cardList/__view/_show/cardList__view_show.css');
+@import url('./blocks/background/__white/background_white.css');
+@import url('./blocks/header/__title/_black/header__title_black.css');
+@import url('./blocks/navigation/__main/_black/navigation__main_black.css');
+@import url('./blocks/navigation/__saved-news/_black/navigation__saved-news_black.css');
+@import url('./blocks/article/__keyword/_visible/article__keyword_visible.css');
+@import url('./blocks/header/_white/header_white.css');
+@import url('./blocks/popup/popup.css');
+@import url('./blocks/popup/_opened/popup_opened.css');
+@import url('./blocks/burger/burger.css');
+@import url('./blocks/burger/_black/burger_black.css');
+@import url('./blocks/burger/__title/_black/burger__title_black.css');
+@import url('./blocks/burger/__view/_black/burger__view_black.css');
+@import url('./blocks/popup/__close/_show/popup__close_show.css');
+@import url('./blocks/burger-navigation/burger-navigation.css');
+
+

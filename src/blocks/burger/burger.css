@@ -1,0 +1,10 @@
+@import url('./__title/burger__title.css');
+@import url('./__view/burger__view.css');
+@import url('./__close/burger__close.css');
+@import url('./__header/burger__header.css');
+
+.burger {
+    padding: 0px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;                 
+}

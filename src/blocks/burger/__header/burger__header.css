@@ -1,0 +1,7 @@
+.burger__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: inset 0px -1px 0px #D1D2D6;       
+}

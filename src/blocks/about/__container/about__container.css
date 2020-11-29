@@ -1,0 +1,22 @@
+.about__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 600px;
+    margin-top: 51px;
+    margin-left: 56px;
+}
+
+@media (max-width: 768px) {
+    .about__container {
+        max-width: 424px;
+        margin-top: 0px;
+        margin-left: 32px;        
+    }
+}
+
+@media (max-width: 435px) {
+    .about__container {        
+        margin-left: 0px;        
+    }
+}

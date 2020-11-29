@@ -1,0 +1,37 @@
+.cardList__view {
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #1A1B22;
+    outline: none;
+    border: none;
+    background: #FFFFFF;
+    border-radius: 80px;
+    width: 288px;
+    height: 64px;
+    align-self: center;
+    margin-top: 64px;
+}
+
+.cardList__view:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .cardList__view {
+        margin-top: 22px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cardList__view {
+        margin-top: 15px;
+    }
+}

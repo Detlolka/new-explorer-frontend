@@ -1,0 +1,19 @@
+.burger-navigation__container {
+    background-color: transparent;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 100px;
+    width: 156px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 0 auto;
+}
+
+
+.burger-navigation__container:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

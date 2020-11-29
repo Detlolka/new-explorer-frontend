@@ -1,0 +1,28 @@
+.burger-navigation__auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;          
+    width: 288px;
+    height: 56px;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;    
+    text-align: center;
+    color: #FFF;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    box-sizing: border-box;
+    border-radius: 100px;
+    background-color: transparent;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+}
+
+.burger-navigation__auth:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

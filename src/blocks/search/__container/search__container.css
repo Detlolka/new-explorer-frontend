@@ -1,0 +1,27 @@
+.search__container {
+    background: #fff;
+    border: 1px solid #d1d2d6;
+    backdrop-filter: blur(8px);
+    border-radius: 100px;    
+    width: 610px;    
+    display: flex;
+    justify-content: space-between;          
+}
+
+
+@media (max-width: 768px) {
+    .search__container {
+        max-width: 448px;        
+        margin-left: 48px;
+    }
+}
+
+@media (max-width: 520px) {
+    .search__container {
+        flex-direction: column;
+        width: 288px;        
+        margin-left: 8px;
+        background: transparent;
+        border: none;        
+    }
+}

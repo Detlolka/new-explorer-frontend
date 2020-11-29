@@ -1,0 +1,33 @@
+.navigation__main {
+    font-family: "Roboto", serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    margin-right: 32px;
+    margin-top: 14px;
+    margin-bottom: 0px;
+    
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box;       
+}
+
+.navigation__main:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .navigation__main {
+        font-size: 16px;
+        line-height: 24px;        
+    }
+}
+
+@media (max-width: 632px) {
+    .navigation__main {        
+        font-size: 12px;
+        line-height: 18px;              
+    }
+}

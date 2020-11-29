@@ -1,0 +1,23 @@
+.saved-news-header__keywords {
+    font-family: 'Roboto', serif;   
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;    
+    color: #1A1B22;
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+    .saved-news-header__keywords {
+        font-size: 14px;        
+    }
+}
+
+@media (max-width: 404px) {
+    .saved-news-header__keywords {
+        font-size: 18px;
+        max-width: 288px;        
+    }
+}

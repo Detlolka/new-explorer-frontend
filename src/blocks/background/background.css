@@ -1,0 +1,23 @@
+
+.background {                  
+    background-image: url('../../images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 1440px;
+    background-size: cover;
+    z-index: 2;
+    margin: 0 auto;       
+}
+
+@media (max-width: 768px) {
+    .background {
+        background-image: url('../../images/background_768.jpg');              
+    }
+}
+
+@media (max-width: 320px) {
+    .background {
+        background-image: url('../../images/background_mobile.jpg');
+    }
+}
+
