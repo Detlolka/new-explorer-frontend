@@ -12,11 +12,13 @@
     overflow: hidden;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    margin-right: 24px;
 }
 @media (max-width: 768px) {
     .article__title {
         font-size: 22px;
         line-height: 24px;
-        padding-left: 16px;        
+        padding-left: 16px;
+        margin-right: 16px;       
     }
 }

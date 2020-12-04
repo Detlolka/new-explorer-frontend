@@ -1,24 +1,25 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import { useWindowWidth } from '@react-hook/window-size'
+import { useWindowWidth } from "@react-hook/window-size";
 import Header from "./Header";
 import SearchFrom from "./SearchForm";
 import NewsCardList from "./NewsCardList";
 import About from "./About";
 import Main from "./Main";
 import Footer from "./Footer";
+import Preloader from "./Preloader";
 import PopupWithRegister from "./PopupWIthRegister";
 import PopupWithAuth from "./PopupWIthAuth";
-import PopupNotification from "./PopupNotification";
 import PopupNotifiCation from "./PopupNotification";
-import BurgerMenu from './BurgerMenu';
+import NotResult from "./NotResult";
+import BurgerMenu from "./BurgerMenu";
+import NewsApi from "../utils/NewsApi";
 
 function App() {
-
   // стейт ширины дисплея
   const [width, setWidth] = useState(false);
-  
+
   //слушатель ширины экрана
   const windowSize = useWindowWidth();
 
@@ -28,6 +29,60 @@ function App() {
   const [handleRegisterPopup, setHandleRegisterPopup] = useState(false);
   //стейт попапа уведомления
   const [handleNotificationPopup, setHandleNotificationPopup] = useState(false);
+  //стейт ключевого слова
+  const [keyword, setKeyword] = useState("");
+  //стейт массива поиска
+  const [articles, setArticles] = useState([]);
+  //cтейт компонента пустого массива
+  const [handleNotResult, setHandleNotResult] = useState(false);
+  //стейт состояния прелоадера
+  const [handlePreloader, setHandlePreloader] = useState(false);
+  //стейт состояния инпутов
+  const [values, setValues] = useState({});
+  //стейт состояния ошибок валидации
+  const [error, setError] = useState({});
+  //стейст состояния кнопки
+  const [isValid, setIsValid] = useState(false);
+  
+
+  // Апи поиска новостей
+  function searchNews(newsName) {
+    setArticles([]);
+    setHandleNotResult(false);
+    setHandlePreloader(true);
+    setTimeout(
+      () =>
+        NewsApi(newsName)
+          .then((res) => {
+            if (res.articles.length === 0) {
+              setHandleNotResult(true);
+            }
+            setArticles(res.articles);
+          })
+          .catch((err) => {
+            console.error(err);
+            setHandleNotResult(true);
+          })
+          .finally(() => setHandlePreloader(false)),
+      1300
+    );
+  }
+
+  //Функция валидации
+  function handleValidation(evt) {
+    const name = evt.target.name;
+    const value = evt.target.value;        
+    setValues({ ...values, [name]: value });
+    setError({ ...error, [name]: evt.target.validationMessage });
+    setIsValid(evt.target.closest("form").checkValidity());
+  }
+
+  //сброс данных форм
+  function resetForms() {
+    setValues({});
+    setError({});
+    setIsValid(false);
+  }
 
   // функция открытия попапа авторизация
   function openPopupAuth() {
@@ -65,8 +120,9 @@ function App() {
       setHandleRegisterPopup(false);
     }
     if (handleNotificationPopup) {
-      setHandleNotificationPopup(false)
+      setHandleNotificationPopup(false);
     }
+    resetForms();
   }
 
   useEffect(() => {
@@ -89,21 +145,20 @@ function App() {
     document.addEventListener("keydown", closeEsc);
 
     // функция замены компонента
-    
-    function changeHeader (size) {      
+
+    function changeHeader(size) {
       if (size <= 520) {
         setWidth(true);
       } else {
-        setWidth(false)
+        setWidth(false);
       }
     }
-    changeHeader(windowSize)
+    changeHeader(windowSize);
 
     return () => {
-      document.removeEventListener('click', closeOverlay);
-      document.removeEventListener('keydown', closeEsc);
-    }
-
+      document.removeEventListener("click", closeOverlay);
+      document.removeEventListener("keydown", closeEsc);
+    };
   });
 
   return (
@@ -111,23 +166,50 @@ function App() {
       <Switch>
         <Route exact path="/">
           <div className="background">
-            {width ?
+            {width ? (
               <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} />
-              : <Header isOpen={openPopupAuth} />
-            }
-            <SearchFrom />
+            ) : (
+              <Header isOpen={openPopupAuth} />
+            )}
+            <SearchFrom keyword={setKeyword} searchNews={searchNews} />
           </div>
-          <NewsCardList />
+          {handlePreloader ? <Preloader /> : null}
+          {articles.length > 0 ? (
+            <NewsCardList news={articles} keyword={keyword} />
+          ) : null}
+          {handleNotResult ? <NotResult /> : null}
           <About />
-          <PopupWithAuth isOpen={handleAuthPopup} onClose={closeAllPopups} changePopup={changePopup} showClose={width} />
-          <PopupWithRegister isOpen={handleRegisterPopup} onClose={closeAllPopups} changePopup={changePopup} showClose={width} />
-          <PopupNotifiCation onClose={closeAllPopups} changeAuth={openPopupAuth} />
+          <PopupWithAuth
+            isOpen={handleAuthPopup}
+            onClose={closeAllPopups}
+            changePopup={changePopup}
+            showClose={width}
+            validation={handleValidation}
+            errorMessage={error}
+            isValid={isValid}
+            values={values}
+          />
+          <PopupWithRegister
+            isOpen={handleRegisterPopup}
+            onClose={closeAllPopups}
+            changePopup={changePopup}
+            showClose={width}
+            validation={handleValidation}
+            errorMessage={error}
+            isValid={isValid}
+            values={values}
+          />
+          <PopupNotifiCation
+            onClose={closeAllPopups}
+            changeAuth={openPopupAuth}
+          />
         </Route>
         <Route path="/saved-news">
-          {width ?
+          {width ? (
             <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} />
-            : <Header />
-          }
+          ) : (
+            <Header />
+          )}
           <Main />
         </Route>
       </Switch>

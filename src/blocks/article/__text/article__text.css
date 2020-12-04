@@ -12,11 +12,13 @@
     overflow: hidden;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    margin-right: 24px;
 }
 
 @media (max-width: 768px) {
     .article__text {
         padding-left: 16px;
-        padding-right: 16px;        
+        padding-right: 16px;
+        margin-right: 16px;        
     }
 }

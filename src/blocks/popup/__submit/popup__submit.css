@@ -12,11 +12,11 @@
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
     border-radius: 100px;
     border: none;
-    margin-top: 7px;
+    margin-top: 28px;
+    cursor: pointer;
 }
 
-.popup__submit:hover {
-    cursor: pointer;
+.popup__submit:hover {    
     background: #347EFF;
 }
 

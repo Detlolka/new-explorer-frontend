@@ -5,13 +5,12 @@ import NewCard from "./NewCard";
 
 export default function SavedNews() {
   // Отрисовка новостей
-  const [articles, setArticles] = useState([newsSave]); 
+  const [articles, setArticles] = useState(newsSave);   
 
   //Изначальная загрузка новостей
   useEffect(() => {
     setArticles(newsSave);
-  }, [newsSave]);
-  
+  }, [newsSave]);  
 
   return (
     <div className="cardList">
