@@ -9,8 +9,15 @@ export default function PopupWithAuth({
   validation,
   errorMessage,
   isValid,
-  values
+  values,
+  auth
 }) {
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    auth(values.email, values.password)
+}
+
   return (
     <PopupWithForm
       name="auth"
@@ -22,6 +29,7 @@ export default function PopupWithAuth({
       changePopup={changePopup}
       showClose={showClose}
       isValid={isValid}
+      handleSubmit={handleSubmit}
       children={
         <div className="popup__inputs">
           <p className="popup__input-title">Email</p>

@@ -1,5 +1,6 @@
 export const URL_NEWS = 'https://nomoreparties.co/news/v2/everything?';
 export const API_KEY = '22e6178072ca4d89853370e20e4e9ad8';
+export const MY_URL = 'http://localhost:3000'
 
 let date = new Date();
 

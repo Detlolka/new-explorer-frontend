@@ -15,6 +15,7 @@ import PopupNotifiCation from "./PopupNotification";
 import NotResult from "./NotResult";
 import BurgerMenu from "./BurgerMenu";
 import NewsApi from "../utils/NewsApi";
+import { register, authorization } from '../utils/MainApi';
 
 function App() {
   // стейт ширины дисплея
@@ -68,6 +69,26 @@ function App() {
     );
   }
 
+  // Апи регистрации
+  function registerUser(email, password, name) {
+    register(email, password, name)
+    .then((res) => {
+      closeAllPopups();
+      openPopupNotification();
+    })
+    .catch((error) => console.error(error))
+  }
+
+  // Апи авторизации
+
+  function authUser(email, password) {
+    authorization(email, password)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((error) => console.error(error) )
+  }
+
   //Функция валидации
   function handleValidation(evt) {
     const name = evt.target.name;
@@ -86,7 +107,7 @@ function App() {
 
   // функция открытия попапа авторизация
   function openPopupAuth() {
-    setHandleAuthPopup(true);
+    setHandleAuthPopup(true);    
   }
 
   // функция открытия попапа регистрации
@@ -106,6 +127,10 @@ function App() {
       closeAllPopups();
     }
     if (handleRegisterPopup) {
+      openPopupAuth();
+      closeAllPopups();
+    }
+    if (handleNotificationPopup) {
       openPopupAuth();
       closeAllPopups();
     }
@@ -188,6 +213,7 @@ function App() {
             errorMessage={error}
             isValid={isValid}
             values={values}
+            auth={authUser}
           />
           <PopupWithRegister
             isOpen={handleRegisterPopup}
@@ -198,10 +224,12 @@ function App() {
             errorMessage={error}
             isValid={isValid}
             values={values}
+            register={registerUser}
           />
           <PopupNotifiCation
             onClose={closeAllPopups}
-            changeAuth={openPopupAuth}
+            changeAuth={changePopup}
+            isOpen={handleNotificationPopup}
           />
         </Route>
         <Route path="/saved-news">

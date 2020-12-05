@@ -1,4 +1,5 @@
 import React from "react";
+import { register } from "../utils/MainApi";
 import PopupWithForm from "./PopupWithForm";
 
 export default function PopupWithRegister({
@@ -9,8 +10,17 @@ export default function PopupWithRegister({
   validation,
   errorMessage,
   isValid,
-  values
-}) {
+  values,
+  register
+})
+
+{
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    register(values.email, values.password, values.name)
+}
+
   return (
     <PopupWithForm
       isOpen={isOpen}
@@ -22,6 +32,7 @@ export default function PopupWithRegister({
       changePopup={changePopup}
       showClose={showClose}
       isValid={isValid}
+      handleSubmit={handleSubmit}
       children={
         <div className="popup__inputs">
           <p className="popup__input-title">Email</p>

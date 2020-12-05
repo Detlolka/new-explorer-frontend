@@ -16,3 +16,4 @@ export default function newsApi(keyword) {
         })
         .then(response)
 }
+
