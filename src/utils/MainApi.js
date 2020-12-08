@@ -25,12 +25,29 @@ export function authorization(email, password) {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => {
+    .then((res) => {      
       return res.json();
     })
     .then((data) => {
-      localStorage.setItem("jwt", data.token);
+      localStorage.setItem("jwt", data.token);      
       return data;
     })
     .catch((error) => console.error(error));
 }
+
+export function getContents(jwt) {  
+  return fetch(`${MY_URL}/users/me`, {
+    method: 'GET',
+    headers: {        
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+    .then((res) => {                               
+      return res.json();
+    })
+    .then((data) =>  data)
+    .catch((error) => {
+      console.error(error);
+    });
+};

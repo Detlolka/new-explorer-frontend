@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { useWindowWidth } from "@react-hook/window-size";
 import Header from "./Header";
 import SearchFrom from "./SearchForm";
@@ -15,15 +15,16 @@ import PopupNotifiCation from "./PopupNotification";
 import NotResult from "./NotResult";
 import BurgerMenu from "./BurgerMenu";
 import NewsApi from "../utils/NewsApi";
-import { register, authorization } from '../utils/MainApi';
+import ProtectedRoute from "./ProtectedRoute";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+import { register, authorization, getContents } from "../utils/MainApi";
 
 function App() {
+  const history = useHistory();
   // стейт ширины дисплея
   const [width, setWidth] = useState(false);
-
   //слушатель ширины экрана
   const windowSize = useWindowWidth();
-
   // стейт попапа авторизации
   const [handleAuthPopup, setHandleAuthPopup] = useState(false);
   // стейт попапа регистрации
@@ -42,10 +43,13 @@ function App() {
   const [values, setValues] = useState({});
   //стейт состояния ошибок валидации
   const [error, setError] = useState({});
-  //стейст состояния кнопки
+  //стейт состояния кнопки
   const [isValid, setIsValid] = useState(false);
+  //стейт авторизации
+  const [loggedIn, setLoggedIn] = useState(false);
+  //стейт данных пользователя
+  const [currentUser, setCurrentUser] = useState("");  
   
-
   // Апи поиска новостей
   function searchNews(newsName) {
     setArticles([]);
@@ -69,6 +73,40 @@ function App() {
     );
   }
 
+  //проверка токена
+  const checkToken = () => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      getContents(jwt)
+       .then((res) => {
+         if(res) {
+           setLoggedIn(true);
+           setCurrentUser(res.name);
+         } else {
+           setLoggedIn(false);
+           localStorage.removeItem("jwt");
+         }
+       })
+       .catch((error) => console.error(error))      
+    }
+  }
+
+  useEffect(() => {
+    checkToken();
+  }, [loggedIn]);
+
+  //функция авторизации
+  function handleLogin() {
+    setLoggedIn(true);
+  }
+
+  //функция выхода
+  function handleLogout() {
+    setLoggedIn(false);
+    localStorage.removeItem("jwt");
+    history.push("/");
+  }
+
   // Апи регистрации
   function registerUser(email, password, name) {
     register(email, password, name)
@@ -76,17 +114,19 @@ function App() {
       closeAllPopups();
       openPopupNotification();
     })
-    .catch((error) => console.error(error))
+    .catch((error) => console.error(error));
   }
 
   // Апи авторизации
-
   function authUser(email, password) {
     authorization(email, password)
-    .then((res) => {
-      console.log(res)
+    .then((data) => {
+      if (data.token) {
+        handleLogin();
+        closeAllPopups();
+      }
     })
-    .catch((error) => console.error(error) )
+    .catch((error) => console.error(error));
   }
 
   //Функция валидации
@@ -187,14 +227,15 @@ function App() {
   });
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
       <Switch>
         <Route exact path="/">
           <div className="background">
             {width ? (
-              <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} />
+              <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
             ) : (
-              <Header isOpen={openPopupAuth} />
+              <Header isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
             )}
             <SearchFrom keyword={setKeyword} searchNews={searchNews} />
           </div>
@@ -234,15 +275,16 @@ function App() {
         </Route>
         <Route path="/saved-news">
           {width ? (
-            <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} />
+            <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
           ) : (
-            <Header />
+            <Header quit={handleLogout} isLogin={loggedIn} />
           )}
-          <Main />
+          <ProtectedRoute component={Main} loggedIn={loggedIn} />
         </Route>
       </Switch>
       <Footer />
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 
