@@ -1,3 +1,6 @@
+.article__save_disabled {
+    pointer-events: none;
+}
 
 .article__save_disabled::before {
     content: 'Войдите, что бы сохранять статьи';

@@ -150,8 +150,10 @@ function App() {
   function registerUser(email, password, name) {
     register(email, password, name)
       .then((res) => {
+        if (res) {
         closeAllPopups();
         openPopupNotification();
+        }
       })
       .catch((error) => console.error(error));
   }
