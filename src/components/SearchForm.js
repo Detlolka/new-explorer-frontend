@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from 'react';
 
-export default function SearchForm({ keyword, searchNews }) {
+export default function SearchForm({ searchNews }) {
 
   const [date, setDate] = useState('');   
 
   function handleSubmit(evt) {
-    evt.preventDefault();
-    keyword(date);
+    evt.preventDefault();    
     searchNews(date);
-
+    const form = evt.target;
+    form.reset();        
   }  
+
   return (
     <div className="search">
       <h1 className="search__title">Что твориться в мире?</h1>

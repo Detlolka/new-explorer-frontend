@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { useWindowWidth } from "@react-hook/window-size";
 import Header from "./Header";
 import SearchFrom from "./SearchForm";
@@ -17,9 +17,19 @@ import BurgerMenu from "./BurgerMenu";
 import NewsApi from "../utils/NewsApi";
 import ProtectedRoute from "./ProtectedRoute";
 import CurrentUserContext from "../contexts/CurrentUserContext";
-import { register, authorization, getContents } from "../utils/MainApi";
+import {
+  register,
+  authorization,
+  getContents,
+  addNews,
+  getNews,
+  removeNews,
+} from "../utils/MainApi";
 
 function App() {
+  //ссылка
+  const { pathname } = useLocation();
+  //хистори
   const history = useHistory();
   // стейт ширины дисплея
   const [width, setWidth] = useState(false);
@@ -31,10 +41,10 @@ function App() {
   const [handleRegisterPopup, setHandleRegisterPopup] = useState(false);
   //стейт попапа уведомления
   const [handleNotificationPopup, setHandleNotificationPopup] = useState(false);
-  //стейт ключевого слова
-  const [keyword, setKeyword] = useState("");
   //стейт массива поиска
   const [articles, setArticles] = useState([]);
+  //стейт сохраненных новостей
+  const [savedNews, setSavedNews] = useState([]);
   //cтейт компонента пустого массива
   const [handleNotResult, setHandleNotResult] = useState(false);
   //стейт состояния прелоадера
@@ -48,11 +58,12 @@ function App() {
   //стейт авторизации
   const [loggedIn, setLoggedIn] = useState(false);
   //стейт данных пользователя
-  const [currentUser, setCurrentUser] = useState("");  
-  
+  const [currentUser, setCurrentUser] = useState("");
+
   // Апи поиска новостей
   function searchNews(newsName) {
     setArticles([]);
+    localStorage.removeItem("articles");
     setHandleNotResult(false);
     setHandlePreloader(true);
     setTimeout(
@@ -62,7 +73,27 @@ function App() {
             if (res.articles.length === 0) {
               setHandleNotResult(true);
             }
-            setArticles(res.articles);
+            const searchArticles = res.articles.map((article) => {
+              const {
+                title,
+                description,
+                publishedAt,
+                source,
+                url,
+                urlToImage,
+              } = article;
+              return {
+                keyword: newsName,
+                title,
+                text: description,
+                date: publishedAt,
+                source: source.name,
+                link: url,
+                image: urlToImage || "https://cdn.akson.ru/i/1819/1819738/1000.jpg"
+              };              
+            });
+            localStorage.setItem("articles", JSON.stringify(searchArticles));
+            setArticles(JSON.parse(localStorage.getItem("articles")));
           })
           .catch((err) => {
             console.error(err);
@@ -77,19 +108,25 @@ function App() {
   const checkToken = () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
+      if (pathname === "/saved-news") {
+        history.push("/saved-news");
+      }
+      if (localStorage.getItem("articles")) {
+        setArticles(JSON.parse(localStorage.getItem("articles")));
+      }
       getContents(jwt)
-       .then((res) => {
-         if(res) {
-           setLoggedIn(true);
-           setCurrentUser(res.name);
-         } else {
-           setLoggedIn(false);
-           localStorage.removeItem("jwt");
-         }
-       })
-       .catch((error) => console.error(error))      
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            setCurrentUser(res.name);
+          } else {
+            setLoggedIn(false);
+            localStorage.removeItem("jwt");
+          }
+        })
+        .catch((error) => console.error(error));
     }
-  }
+  };
 
   useEffect(() => {
     checkToken();
@@ -104,35 +141,84 @@ function App() {
   function handleLogout() {
     setLoggedIn(false);
     localStorage.removeItem("jwt");
+    localStorage.removeItem("articles");
+    setArticles([]);
     history.push("/");
   }
 
   // Апи регистрации
   function registerUser(email, password, name) {
     register(email, password, name)
-    .then((res) => {
-      closeAllPopups();
-      openPopupNotification();
-    })
-    .catch((error) => console.error(error));
+      .then((res) => {
+        closeAllPopups();
+        openPopupNotification();
+      })
+      .catch((error) => console.error(error));
   }
 
   // Апи авторизации
   function authUser(email, password) {
     authorization(email, password)
-    .then((data) => {
-      if (data.token) {
-        handleLogin();
-        closeAllPopups();
-      }
-    })
-    .catch((error) => console.error(error));
+      .then((data) => {
+        if (data.token) {
+          handleLogin();
+          closeAllPopups();
+        }
+      })
+      .catch((error) => console.error(error));
   }
+
+  // Апи сохранения новости
+  function saveArticle(article) {
+    addNews(article).then((art) => {
+      setSavedNews([art, ...savedNews]);
+    });
+  }
+
+  // Апи удаления новости
+  function deleteNews(id) {
+    removeNews(id)
+      .then((res) => {
+        const newArticles = savedNews.filter((a) => a._id !== id);
+        setSavedNews(newArticles);
+      })
+      .catch((error) => console.error(error));
+  }
+
+  // функция распределитель
+  function patchArticles(searchNew) {    
+    const myArticle = savedNews.find((a) => {      
+      if (searchNew) {
+        return a.link === searchNew.link && a.title === searchNew.title
+      }
+    });   
+
+    if (myArticle) {
+      deleteNews(myArticle._id);
+    } else {
+      saveArticle(searchNew);
+    }
+  }
+
+  //Апи вывода сохраненых карт
+  function getSavedNews() {
+    getNews()
+      .then((savedArt) => {
+        setSavedNews(savedArt.reverse());
+      })
+      .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    if (loggedIn) {
+      getSavedNews();
+    }
+  }, [loggedIn]);
 
   //Функция валидации
   function handleValidation(evt) {
     const name = evt.target.name;
-    const value = evt.target.value;        
+    const value = evt.target.value;
     setValues({ ...values, [name]: value });
     setError({ ...error, [name]: evt.target.validationMessage });
     setIsValid(evt.target.closest("form").checkValidity());
@@ -147,7 +233,7 @@ function App() {
 
   // функция открытия попапа авторизация
   function openPopupAuth() {
-    setHandleAuthPopup(true);    
+    setHandleAuthPopup(true);
   }
 
   // функция открытия попапа регистрации
@@ -228,62 +314,86 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-    <div className="page">
-      <Switch>
-        <Route exact path="/">
-          <div className="background">
+      <div className="page">
+        <Switch>
+          <Route exact path="/">
+            <div className="background">
+              {width ? (
+                <BurgerMenu
+                  onClose={closeAllPopups}
+                  isOpen={openPopupAuth}
+                  quit={handleLogout}
+                  isLogin={loggedIn}
+                />
+              ) : (
+                <Header
+                  isOpen={openPopupAuth}
+                  quit={handleLogout}
+                  isLogin={loggedIn}
+                />
+              )}
+              <SearchFrom searchNews={searchNews} />
+            </div>
+            {handlePreloader ? <Preloader /> : null}
+            {articles.length > 0 ? (
+              <NewsCardList
+                news={articles}
+                isLogin={loggedIn}
+                savedArticles={savedNews}
+                changeArticles={patchArticles}
+              />
+            ) : null}
+            {handleNotResult ? <NotResult /> : null}
+            <About />
+            <PopupWithAuth
+              isOpen={handleAuthPopup}
+              onClose={closeAllPopups}
+              changePopup={changePopup}
+              showClose={width}
+              validation={handleValidation}
+              errorMessage={error}
+              isValid={isValid}
+              values={values}
+              auth={authUser}
+            />
+            <PopupWithRegister
+              isOpen={handleRegisterPopup}
+              onClose={closeAllPopups}
+              changePopup={changePopup}
+              showClose={width}
+              validation={handleValidation}
+              errorMessage={error}
+              isValid={isValid}
+              values={values}
+              register={registerUser}
+            />
+            <PopupNotifiCation
+              onClose={closeAllPopups}
+              changeAuth={changePopup}
+              isOpen={handleNotificationPopup}
+            />
+          </Route>
+          <Route path="/saved-news">
             {width ? (
-              <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
+              <BurgerMenu
+                onClose={closeAllPopups}
+                isOpen={openPopupAuth}
+                quit={handleLogout}
+                isLogin={loggedIn}
+              />
             ) : (
-              <Header isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
+              <Header quit={handleLogout} isLogin={loggedIn} />
             )}
-            <SearchFrom keyword={setKeyword} searchNews={searchNews} />
-          </div>
-          {handlePreloader ? <Preloader /> : null}
-          {articles.length > 0 ? (
-            <NewsCardList news={articles} keyword={keyword} />
-          ) : null}
-          {handleNotResult ? <NotResult /> : null}
-          <About />
-          <PopupWithAuth
-            isOpen={handleAuthPopup}
-            onClose={closeAllPopups}
-            changePopup={changePopup}
-            showClose={width}
-            validation={handleValidation}
-            errorMessage={error}
-            isValid={isValid}
-            values={values}
-            auth={authUser}
-          />
-          <PopupWithRegister
-            isOpen={handleRegisterPopup}
-            onClose={closeAllPopups}
-            changePopup={changePopup}
-            showClose={width}
-            validation={handleValidation}
-            errorMessage={error}
-            isValid={isValid}
-            values={values}
-            register={registerUser}
-          />
-          <PopupNotifiCation
-            onClose={closeAllPopups}
-            changeAuth={changePopup}
-            isOpen={handleNotificationPopup}
-          />
-        </Route>
-        <Route path="/saved-news">
-          {width ? (
-            <BurgerMenu onClose={closeAllPopups} isOpen={openPopupAuth} quit={handleLogout} isLogin={loggedIn} />
-          ) : (
-            <Header quit={handleLogout} isLogin={loggedIn} />
-          )}
-          <ProtectedRoute component={Main} loggedIn={loggedIn} />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
+            <ProtectedRoute
+              component={Main}
+              loggedIn={loggedIn}
+              news={savedNews}
+              deleteNew={deleteNews}
+            />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
     </CurrentUserContext.Provider>
   );
 }

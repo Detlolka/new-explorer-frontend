@@ -3,7 +3,7 @@
     border: 1px solid #1A1B22;
     box-sizing: border-box;
     border-radius: 100px;
-    width: 112px;
+    min-width: 135px;
     height: 48px;
     display: flex;
     justify-content: center;
