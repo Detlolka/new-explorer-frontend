@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import NewCard from "./NewCard";
 
 
-export default function NewCardList({ news, isLogin,  savedArticles, changeArticles }) {  
+export default function NewCardList({ news, isLogin,  savedArticles, changeArticles, openAuth }) {  
   
   // Отрисовка новостей
   const [articles, setArticles] = useState([]);  
@@ -31,7 +31,7 @@ export default function NewCardList({ news, isLogin,  savedArticles, changeArtic
       <p className="cardList__result">Результаты поиска</p>
       <div className="cardList__container">
         {articles.map((art, i) => {
-          return <NewCard art={art} key={i} isLogin={isLogin} savedArticles={savedArticles} changeArticles={changeArticles} />;
+          return <NewCard art={art} key={i} isLogin={isLogin} savedArticles={savedArticles} changeArticles={changeArticles} openAuth={openAuth} />;
         })}
       </div>
       <button

@@ -9,7 +9,7 @@ export default function BurgerNavigation({ changeButton, isOpen, quit, isLogin }
     return (
         <nav className="burger-navigaton">
             <Link to="/" className="burger-navigation__link" onClick={changeButton}>Главная</Link>
-            <Link to="/saved-news" className="burger-navigation__link" onClick={changeButton}>Сохранённые статьи</Link>
+    {isLogin &&   <Link to="/saved-news" className="burger-navigation__link" onClick={changeButton}>Сохранённые статьи</Link> }
         { isLogin ?
             <div className="burger-navigation__container">
                 <p className="burger-navigation__profile">{currentUser}</p>

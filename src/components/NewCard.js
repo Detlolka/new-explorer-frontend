@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import 'moment/locale/ru';
 const moment = require('moment');
 
-export default function NewCard({ art, isLogin , deleteNew, savedArticles, changeArticles }) {
+export default function NewCard({ art, isLogin , deleteNew, savedArticles, changeArticles, openAuth }) {
   
 
   const { pathname } = useLocation();
@@ -15,11 +15,15 @@ export default function NewCard({ art, isLogin , deleteNew, savedArticles, chang
   useEffect(() => {
        if (isLogin) {
          setFlag(savedArticles.find((a) => a.link === art.link) !== undefined) 
-       }
+       } 
   }, [isLogin, savedArticles, art.link, flag])
   
   function clickButton() {
+    if(isLogin) {
     changeArticles(art);
+    } else {
+      openAuth()
+    }
   }
 
   return (
@@ -59,7 +63,7 @@ export default function NewCard({ art, isLogin , deleteNew, savedArticles, chang
       {pathname === "/saved-news" ? (
         <button className="article__delete" onClick={() => deleteNew(art._id)}></button>
       ) : (
-        <button className={"article__save " + (flag && "article__save_active ") +  (!isLogin && " article__save_disabled")} onClick={clickButton} ></button>
+        <button className={"article__save " + (flag && "article__save_active ") } onClick={clickButton} ></button>
       )}
     </div>
   );

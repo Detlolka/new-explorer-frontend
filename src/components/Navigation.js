@@ -14,7 +14,7 @@ export default function Navigation({ isOpen, quit, isLogin }) {
       <Link className={"navigation__main " + (pathname==="/saved-news" && "navigation__main_black")} to="/">
         Главная
       </Link>
-      <Link className={"navigation__saved-news " + (pathname==='/saved-news' && "navigation__saved-news_black")} to="/saved-news" >Сохраненные статьи</Link>
+      { isLogin && <Link className={"navigation__saved-news " + (pathname==='/saved-news' && "navigation__saved-news_black")} to="/saved-news" >Сохраненные статьи</Link>}
       { isLogin ?
       <div className={"navigation__container " + (pathname==="/" && "navigation__container_white")}>
       <p className={"navigation__profile " + (pathname==="/" && "navigation__profile_white")} >{currentUser}</p>

@@ -343,6 +343,7 @@ function App() {
                 isLogin={loggedIn}
                 savedArticles={savedNews}
                 changeArticles={patchArticles}
+                openAuth={openPopupAuth}
               />
             ) : null}
             {handleNotResult ? <NotResult /> : null}
