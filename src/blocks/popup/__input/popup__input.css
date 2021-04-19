@@ -1,14 +1,17 @@
-.popup__input {    
-    border: none;    
+.popup__input {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     width: 100%;
-    margin-bottom: 31px;    
+    margin-bottom: 3px;
+    background-color: transparent;
 }
 
-.popup__input[placeholder] {
-    opacity: 0.2;
-}
-
-.popup__input:focus {    
+.popup__input:focus {
     outline: none;
 }

@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import BurgerNavigation from './BurgerNavigation';
 
-export default function BurgerMenu({ onClose, isOpen }) {
+export default function BurgerMenu({ onClose, isOpen, quit, isLogin }) {
 
     // стейт кнопки
-    const [button, setButton] = useState(false);
+    const [button, setButton] = useState(false);    
 
     const { pathname } = useLocation();
 
@@ -17,7 +17,7 @@ export default function BurgerMenu({ onClose, isOpen }) {
             onClose()
         } else {
             setButton(true);
-        }
+        }       
     }
 
     return (
@@ -29,7 +29,7 @@ export default function BurgerMenu({ onClose, isOpen }) {
             :<button className={"burger__view " + (pathname==="/saved-news" && "burger__view_black")} onClick={changeButton} />             
             }
             </header>
-            {button && <BurgerNavigation changeButton={changeButton} isOpen={isOpen} />}          
+            {button && <BurgerNavigation changeButton={changeButton} isOpen={isOpen} quit={quit} isLogin={isLogin} />}          
 
         </div>
     )

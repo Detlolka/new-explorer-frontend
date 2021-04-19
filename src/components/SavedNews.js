@@ -1,23 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { newsSave } from "../utils/testArraySave";
 import NewCard from "./NewCard";
 
-export default function SavedNews() {
-  // Отрисовка новостей
-  const [articles, setArticles] = useState([newsSave]); 
-
-  //Изначальная загрузка новостей
-  useEffect(() => {
-    setArticles(newsSave);
-  }, [newsSave]);
-  
+export default function SavedNews({ news, deleteNew }) {  
 
   return (
     <div className="cardList">
       <div className="cardList__container">
-        {articles.map((art, i) => {
-          return <NewCard art={art} key={i} />;
+        {news.map((art, i) => {
+          return <NewCard art={art} key={i} deleteNew={deleteNew} />;
         })}
       </div>      
     </div>

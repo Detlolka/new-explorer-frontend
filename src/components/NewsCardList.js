@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { news } from "../utils/testArray";
 import NewCard from "./NewCard";
 
-export default function NewCardList() {
+
+export default function NewCardList({ news, isLogin,  savedArticles, changeArticles, openAuth }) {  
   
   // Отрисовка новостей
-  const [articles, setArticles] = useState([]); 
+  const [articles, setArticles] = useState([]);  
 
   // скрытие кнопки для отображения новостей
   const [activeButton, setActiveButton] = useState(false);
@@ -26,12 +26,12 @@ export default function NewCardList() {
   }
   
 
-  return (
+  return (       
     <div className="cardList">
       <p className="cardList__result">Результаты поиска</p>
       <div className="cardList__container">
         {articles.map((art, i) => {
-          return <NewCard art={art} key={i} />;
+          return <NewCard art={art} key={i} isLogin={isLogin} savedArticles={savedArticles} changeArticles={changeArticles} openAuth={openAuth} />;
         })}
       </div>
       <button
@@ -42,6 +42,6 @@ export default function NewCardList() {
       >
         Показать еще
       </button>
-    </div>
+    </div>       
   );
 }
